@@ -18,12 +18,14 @@ covid_data$Age.Group[which(covid_data$Age >= 50 & covid_data$Age <= 59)] <- '50-
 covid_data$Age.Group[which(covid_data$Age >= 60 & covid_data$Age <= 69)] <- '60-69'
 covid_data$Age.Group[which(covid_data$Age >= 70 & covid_data$Age <= 79)] <- '70-79'
 covid_data$Age.Group[which(covid_data$Age >= 80 & covid_data$Age <= 89)] <- '80-89'
-covid_data$Age.Group[which(covid_data$Age >= 90 & covid_data$Age <= 100)] <- '90-100'
+
+# Decided to drop this age group, because there were only 11 samples, so it's misleading.
+# covid_data$Age.Group[which(covid_data$Age >= 90 & covid_data$Age <= 100)] <- '90-100'
+covid_data <- covid_data[which(covid_data$Age <= 89), ]
 
 group_order <- c("5-10", "11-17", "18-29",
                  "30-39", "40-49", "50-59",
-                 "60-69", "70-79", "80-89",
-                 "90-100")
+                 "60-69", "70-79", "80-89")
 
 age_group_breakdown <- data.frame(age_group = group_order,
                                   Negative = 0,
